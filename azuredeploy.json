@@ -6,7 +6,8 @@
       "name": "bicep",
       "version": "0.28.1.47646",
       "templateHash": "7480269780041571611"
-    }
+    },
+    "description": "AI Foundry workspace with managed network and private endpoints"
   },
   "parameters": {
     "userPrincipalId": {
@@ -1295,6 +1296,10 @@
     "gptDeploymentName": {
       "type": "string",
       "value": "[variables('gptDeploymentName')]"
+    },
+    "resourceGroupName": {
+      "type": "string",
+      "value": "[resourceGroup().name]"
     }
   }
 }

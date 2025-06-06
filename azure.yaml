@@ -1,0 +1,21 @@
+name: aifoundry-managed-network
+metadata:
+  template: aifoundry-managed-network@0.0.1-beta
+services:
+  ai-foundry:
+    project: .
+    language: bicep
+    host: containerapp
+
+infra:
+  provider: bicep
+  path: .
+
+hooks:
+  postprovision:
+    windows:
+      shell: pwsh
+      run: ./hooks/postprovision.ps1
+    posix:
+      shell: sh  
+      run: ./hooks/postprovision.sh

@@ -1,6 +1,15 @@
 # Azure AI Studio Managed Network
 
+One-click deploy:
+
 [![Deploy to Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fctava-msft%2Faifoundry-managed-network%2Fmain%2Fazuredeploy.json)
+
+The would need to run the following command to provision the network in cloud powershell:
+
+az ml workspace provision-network -g <resource group> -w <workspace name>
+
+Altenatively, run `azd auth init` and `azd up`.
+
 
 This template sets up Azure AI Studio with a managed network and connected resources for secure, private deployment with comprehensive networking isolation.
 
