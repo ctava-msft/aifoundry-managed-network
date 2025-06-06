@@ -5,6 +5,7 @@ services:
   ai-foundry:
     project: .
     host: containerapp
+    language: python
 
 infra:
   provider: bicep
@@ -12,9 +13,13 @@ infra:
 
 hooks:
   postprovision:
+    posix:
+      shell: sh
+      continueOnError: false
+      interactive: true
+      run: hooks/postprovision.sh
     windows:
       shell: pwsh
-      run: ./hooks/postprovision.ps1
-    posix:
-      shell: sh  
-      run: ./hooks/postprovision.sh
+      continueOnError: false
+      interactive: true
+      run: hooks/postprovision.ps1
