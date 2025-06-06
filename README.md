@@ -8,7 +8,7 @@ The would need to run the following command to provision the network in cloud po
 
 az ml workspace provision-network -g <resource group> -w <workspace name>
 
-Altenatively, run `azd auth init` and `azd up`.
+Altenatively, run `azd auth login` and `azd up`.
 
 
 This template sets up Azure AI Studio with a managed network and connected resources for secure, private deployment with comprehensive networking isolation.
