@@ -4,7 +4,6 @@ metadata:
 services:
   ai-foundry:
     project: .
-    language: bicep
     host: containerapp
 
 infra:
