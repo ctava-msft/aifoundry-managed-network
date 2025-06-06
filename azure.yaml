@@ -1,11 +1,6 @@
 name: aifoundry-managed-network
 metadata:
   template: aifoundry-managed-network@0.0.1-beta
-services:
-  ai-foundry:
-    project: .
-    host: containerapp
-    language: python
 
 infra:
   provider: bicep
