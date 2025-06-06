@@ -297,7 +297,9 @@
       },
       "dependsOn": [
         "[resourceId('Microsoft.MachineLearningServices/workspaces', variables('workspaceName'))]",
-        "[resourceId('Microsoft.Search/searchServices', variables('searchServiceName'))]"
+        "[resourceId('Microsoft.Search/searchServices', variables('searchServiceName'))]",
+        "[resourceId('Microsoft.MachineLearningServices/workspaces/connections', variables('workspaceName'), variables('azureAISearchConnectionName'))]",
+        "[resourceId('Microsoft.Network/privateEndpoints', variables('privateEndpoints').search)]"
       ]
     },
     {
@@ -315,7 +317,9 @@
       },
       "dependsOn": [
         "[resourceId('Microsoft.MachineLearningServices/workspaces', variables('workspaceName'))]",
-        "[resourceId('Microsoft.CognitiveServices/accounts', variables('aiServicesName'))]"
+        "[resourceId('Microsoft.CognitiveServices/accounts', variables('aiServicesName'))]",
+        "[resourceId('Microsoft.MachineLearningServices/workspaces/connections', variables('workspaceName'), variables('azureOpenAIConnectionName'))]",
+        "[resourceId('Microsoft.Network/privateEndpoints', variables('privateEndpoints').aiServices)]"
       ]
     },
     {
