@@ -190,7 +190,7 @@
         "publicNetworkAccess": "disabled",
         "networkRuleSet": {
           "ipRules": "[if(greater(length(variables('allowedIpAddresses')), 0), map(variables('allowedIpAddresses'), lambda('ip', createObject('value', lambdaVariables('ip')))), createArray())]",
-          "bypass": "AzurePortal"
+          "bypass": "AzureServices"
         },
         "encryptionWithCmk": {
           "enforcement": "Unspecified"
