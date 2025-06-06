@@ -419,7 +419,7 @@
         "virtualNetwork": {
           "id": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]"
         },
-        "registrationEnabled": true
+        "registrationEnabled": false
       },
       "dependsOn": [
         "[resourceId('Microsoft.Network/privateDnsZones', variables('privateDnsZones').notebooks)]",
@@ -435,7 +435,7 @@
         "virtualNetwork": {
           "id": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]"
         },
-        "registrationEnabled": true
+        "registrationEnabled": false
       },
       "dependsOn": [
         "[resourceId('Microsoft.Network/privateDnsZones', variables('privateDnsZones').cognitiveservices)]",
@@ -451,7 +451,7 @@
         "virtualNetwork": {
           "id": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]"
         },
-        "registrationEnabled": true
+        "registrationEnabled": false
       },
       "dependsOn": [
         "[resourceId('Microsoft.Network/privateDnsZones', variables('privateDnsZones').openai)]",
@@ -467,7 +467,7 @@
         "virtualNetwork": {
           "id": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]"
         },
-        "registrationEnabled": true
+        "registrationEnabled": false
       },
       "dependsOn": [
         "[resourceId('Microsoft.Network/privateDnsZones', variables('privateDnsZones').aiservices)]",
@@ -483,7 +483,7 @@
         "virtualNetwork": {
           "id": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]"
         },
-        "registrationEnabled": true
+        "registrationEnabled": false
       },
       "dependsOn": [
         "[resourceId('Microsoft.Network/privateDnsZones', variables('privateDnsZones').blob)]",
@@ -499,7 +499,7 @@
         "virtualNetwork": {
           "id": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]"
         },
-        "registrationEnabled": true
+        "registrationEnabled": false
       },
       "dependsOn": [
         "[resourceId('Microsoft.Network/privateDnsZones', variables('privateDnsZones').file)]",
@@ -515,7 +515,7 @@
         "virtualNetwork": {
           "id": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]"
         },
-        "registrationEnabled": true
+        "registrationEnabled": false
       },
       "dependsOn": [
         "[resourceId('Microsoft.Network/privateDnsZones', variables('privateDnsZones').search)]",
@@ -531,7 +531,7 @@
         "virtualNetwork": {
           "id": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]"
         },
-        "registrationEnabled": true
+        "registrationEnabled": false
       },
       "dependsOn": [
         "[resourceId('Microsoft.Network/privateDnsZones', variables('privateDnsZones').vault)]",
