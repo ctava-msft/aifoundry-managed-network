@@ -36,6 +36,14 @@
       "metadata": {
         "description": "Timestamp for the deployment to ensure unique role assignment names"
       }
+    },
+    "vmAdminUsername": {
+      "type": "string",
+      "metadata": { "description": "Admin username for the Windows VM" }
+    },
+    "vmAdminPassword": {
+      "type": "secureString",
+      "metadata": { "description": "Admin password for the Windows VM" }
     }
   },
   "variables": {
@@ -87,7 +95,9 @@
       "azureMLDataScientist": "f6c7c914-8db3-469d-8ca1-694a8f32e121"
     },
     "deploymentSuffix": "[substring(replace(replace(variables('deploymentTimestamp'), ':', ''), '-', ''), 0, 8)]",
-    "roleAssignmentSuffix": "[concat(variables('uniqueSuffix'), variables('deploymentSuffix'))]"
+    "roleAssignmentSuffix": "[concat(variables('uniqueSuffix'), variables('deploymentSuffix'))]",
+    "vmName": "[format('vm-{0}', variables('uniqueSuffix'))]",
+    "nicName": "[format('{0}-nic', variables('vmName'))]"
   },
   "resources": [
     {
@@ -1218,6 +1228,65 @@
         "[resourceId('Microsoft.MachineLearningServices/workspaces', variables('workspaceName'))]",
         "[resourceId('Microsoft.Search/searchServices', variables('searchServiceName'))]"
       ]
+    },
+    {
+      "type": "Microsoft.Network/networkInterfaces",
+      "apiVersion": "2023-04-01",
+      "name": "[variables('nicName')]",
+      "location": "[variables('location')]",
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "subnet": {
+                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), 'default')]"
+              },
+              "privateIPAllocationMethod": "Dynamic"
+            }
+          }
+        ]
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Compute/virtualMachines",
+      "apiVersion": "2023-09-01",
+      "name": "[variables('vmName')]",
+      "location": "[variables('location')]",
+      "properties": {
+        "hardwareProfile": { "vmSize": "Standard_DS1_v2" },
+        "osProfile": {
+          "computerName": "[variables('vmName')]",
+          "adminUsername": "[parameters('vmAdminUsername')]",
+          "adminPassword": "[parameters('vmAdminPassword')]",
+          "windowsConfiguration": { "enableAutomaticUpdates": true }
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "MicrosoftWindowsServer",
+            "offer": "WindowsServer",
+            "sku": "2022-datacenter-azure-edition",
+            "version": "latest"
+          },
+          "osDisk": {
+            "createOption": "FromImage",
+            "diskSizeGB": 128
+          }
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('nicName'))]"
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkInterfaces', variables('nicName'))]"
+      ]
     }
   ],
   "outputs": {
@@ -1252,6 +1321,10 @@
     "resourceGroupName": {
       "type": "string",
       "value": "[resourceGroup().name]"
+    },
+    "vmName": {
+      "type": "string",
+      "value": "[variables('vmName')]"
     }
   }
 }
