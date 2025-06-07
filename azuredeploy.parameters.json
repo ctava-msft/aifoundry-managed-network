@@ -6,7 +6,7 @@
             "value": ""
         },
         "skipRoleAssignments": {
-            "value": true
+            "value": false
         },
         "allowedIpAddresses": {
             "value": ["redacted"]
