@@ -252,7 +252,7 @@
       },
       "sku": {
         "name": "Standard",
-        "capacity": 0
+        "capacity": 1
       },
       "dependsOn": [
         "[resourceId('Microsoft.CognitiveServices/accounts', variables('aiServicesName'))]"
@@ -271,7 +271,7 @@
       },
       "sku": {
         "name": "Standard",
-        "capacity": 0
+        "capacity": 1
       },
       "dependsOn": [
         "[resourceId('Microsoft.CognitiveServices/accounts', variables('aiServicesName'))]"
