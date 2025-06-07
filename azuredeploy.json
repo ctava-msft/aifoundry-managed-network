@@ -63,6 +63,7 @@
     "azureOpenAIConnectionName": "[format('{0}-connection-AzureOpenAI', variables('workspaceName'))]",
     "azureAISearchConnectionName": "[format('{0}-connection-AzureAISearch', variables('workspaceName'))]",
     "gptDeploymentName": "gpt-4o-mini",
+    "embeddingsDeploymentName": "text-embedding-3-large",
     "privateEndpoints": {
       "aiHub": "[format('pe-aihub-{0}', variables('uniqueSuffix'))]",
       "aiServices": "[format('pe-aiservices-{0}', variables('uniqueSuffix'))]",
@@ -247,6 +248,25 @@
           "format": "OpenAI",
           "name": "gpt-4o-mini",
           "version": "2024-07-18"
+        }
+      },
+      "sku": {
+        "name": "Standard",
+        "capacity": 10
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.CognitiveServices/accounts', variables('aiServicesName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.CognitiveServices/accounts/deployments",
+      "apiVersion": "2023-05-01",
+      "name": "[format('{0}/{1}', variables('aiServicesName'), variables('embeddingsDeploymentName'))]",
+      "properties": {
+        "model": {
+          "format": "OpenAI",
+          "name": "text-embedding-3-large",
+          "version": "1"
         }
       },
       "sku": {
@@ -1383,6 +1403,10 @@
     "gptDeploymentName": {
       "type": "string",
       "value": "[variables('gptDeploymentName')]"
+    },
+    "embeddingsDeploymentName": {
+      "type": "string",
+      "value": "[variables('embeddingsDeploymentName')]"
     },
     "resourceGroupName": {
       "type": "string",
