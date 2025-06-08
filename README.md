@@ -8,9 +8,6 @@ The would need to run the following command to provision the network in cloud po
 
 az ml workspace provision-network -g <resource group> -w <workspace name>
 
-Altenatively, run `azd auth login` and `azd up`.
-
-
 This template sets up Azure AIFoundry with a managed network and connected resources for secure, private deployment with comprehensive networking isolation.
 
 Azure AIFoundry is built on Azure Machine Learning as the primary resource provider and takes a dependency on the Cognitive Services (Azure AI Services) resource provider to surface model-as-a-service endpoints for Azure Speech, Azure Content Safety, and Azure OpenAI service.
