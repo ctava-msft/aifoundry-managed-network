@@ -1331,8 +1331,7 @@
           "adminPassword": "[parameters('vmAdminPassword')]",
           "windowsConfiguration": { 
             "enableAutomaticUpdates": true,
-            "provisionVMAgent": true,
-            "enableAzureADLogin": true
+            "provisionVMAgent": true
           }
         },
         "storageProfile": {
