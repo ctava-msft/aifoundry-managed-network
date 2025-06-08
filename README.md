@@ -1,4 +1,4 @@
-# Azure AI Studio Managed Network
+# Azure AIFoundry Managed Network
 
 One-click deploy:
 
@@ -11,15 +11,15 @@ az ml workspace provision-network -g <resource group> -w <workspace name>
 Altenatively, run `azd auth login` and `azd up`.
 
 
-This template sets up Azure AI Studio with a managed network and connected resources for secure, private deployment with comprehensive networking isolation.
+This template sets up Azure AIFoundry with a managed network and connected resources for secure, private deployment with comprehensive networking isolation.
 
-Azure AI Studio is built on Azure Machine Learning as the primary resource provider and takes a dependency on the Cognitive Services (Azure AI Services) resource provider to surface model-as-a-service endpoints for Azure Speech, Azure Content Safety, and Azure OpenAI service.
+Azure AIFoundry is built on Azure Machine Learning as the primary resource provider and takes a dependency on the Cognitive Services (Azure AI Services) resource provider to surface model-as-a-service endpoints for Azure Speech, Azure Content Safety, and Azure OpenAI service.
 
 An 'Azure AI Hub' is a special kind of 'Azure Machine Learning workspace', that is kind = "hub".
 
 ## Design
 
-This deployment creates a fully private Azure AI Studio environment with:
+This deployment creates a fully private Azure AIFoundry environment with:
 - **Inbound Access**: Disabled public access, enabled from selected IP addresses only
 - **Outbound Access**: Private with Allow Internet Outbound enabled
 - **Identity**: System-managed identity with credential-based authentication
@@ -53,7 +53,7 @@ The following private endpoints are created for external access:
 
 | Service | Private DNS Zone | Purpose |
 | - | - | - |
-| AI Foundry Hub | `privatelink.api.azureml.ms` | AI Studio management access |
+| AI Foundry Hub | `privatelink.api.azureml.ms` | AIFoundry management access |
 | AI Foundry Hub | `privatelink.notebooks.azure.net` | Notebook and compute access |
 | AI Services | `privatelink.cognitiveservices.azure.com` | AI Services access |
 | AI Services | `privatelink.openai.azure.com` | Azure OpenAI access |
@@ -134,9 +134,9 @@ The AI Hub creates managed private endpoints for:
 
 ## Learn more
 
-If you are new to Azure AI studio, see:
+If you are new to Azure AIFoundry, see:
 
-- [Azure AI studio](https://aka.ms/aistudio/docs)
+- [Azure AIFoundry](https://aka.ms/aistudio/docs)
 - [Securely use playground chat - Azure AI Foundry](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/secure-playground-chat)
 
 If you are new to Azure Machine Learning, see:
@@ -149,5 +149,5 @@ If you are new to Azure Machine Learning, see:
 
 Reference:
 
-- [AI studio Managed Network](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/configure-managed-network?tabs=portal)
-- [Azure AI Studio private networking](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/configure-private-link)
+- [AIFoundry Managed Network](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/configure-managed-network?tabs=portal)
+- [Azure AIFoundry private networking](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/configure-private-link)
