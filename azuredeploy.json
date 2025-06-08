@@ -1324,7 +1324,7 @@
       "name": "[variables('vmName')]",
       "location": "[variables('location')]",
       "properties": {
-        "hardwareProfile": { "vmSize": "Standard_DS1_v2" },
+        "hardwareProfile": { "vmSize": "Standard_D4s_v3" },
         "osProfile": {
           "computerName": "[variables('vmName')]",
           "adminUsername": "[parameters('vmAdminUsername')]",
